@@ -16,12 +16,12 @@ import { mapState } from 'vuex'
 import axios from 'axios'
 
 export default {
-  async fetch ({store}) {
+  async fetch ({store, redirect}) {
     try {
-      const res = await axios.get('https://odos-cuvsmolowg.now.sh/todos')
+      const res = await axios.get('https://todos-cuvsmolowg.now.sh/todos')
       store.commit('init', res.data)
     } catch (error) {
-      store.commit('init', [])
+      redirect('/error')
     }
   },
   computed: {
