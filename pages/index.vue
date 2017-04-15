@@ -17,8 +17,12 @@ import axios from 'axios'
 
 export default {
   async fetch ({store}) {
-    const res = await axios.get('https://todos-cuvsmolowg.now.sh/todos')
-    store.commit('init', res.data)
+    try {
+      const res = await axios.get('https://odos-cuvsmolowg.now.sh/todos')
+      store.commit('init', res.data)
+    } catch (error) {
+      store.commit('init', [])
+    }
   },
   computed: {
     ...mapState({
