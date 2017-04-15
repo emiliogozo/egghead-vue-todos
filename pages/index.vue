@@ -13,8 +13,13 @@
 
 <script>
 import { mapState } from 'vuex'
+import axios from 'axios'
 
 export default {
+  async fetch ({store}) {
+    const res = await axios.get('https://todos-cuvsmolowg.now.sh/todos')
+    store.commit('init', res.data)
+  },
   computed: {
     ...mapState({
       todos: state => state.todos
